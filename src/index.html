@@ -10,12 +10,14 @@
     <button id="logout-button">
         Sign out
     </button>
+
     <button id="login-button">
         Sign in with Google
     </button>
     <br>
+
     <form id="chat-form" method="post" autocomplete="off">
-        <input type="text" id="message" name="message" placeholder="Message">
+        <input maxlength="200" type="text" id="message" name="message" placeholder="Message">
         <button id="submit-button" type="submit">Send</button>
     </form>
     <div id="messages"></div>
