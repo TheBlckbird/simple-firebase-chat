@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+.firebaserc
+public
+.firebase
+firebase-debug.log
+.vscode
+src/firebaseConfig.js
