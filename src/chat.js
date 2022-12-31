@@ -12,12 +12,23 @@ import { userId, userName } from "./auth";
 const db = getDatabase(firebaseApp);
 const messagesReference = ref(db, "messages/");
 
+function escapeHtml(unsafe)
+{
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 function addMessage(message) {
     const newMessageReference = push(messagesReference);
+    const escapedMessage = escapeHtml(message);
 
     set(newMessageReference, {
         name: userName,
-        message: message,
+        message: escapedMessage,
         userId: userId,
     });
 }
@@ -27,8 +38,10 @@ function addMessageElement(message, name) {
         return
     }
 
+    const escapedMessage = escapeHtml(message);
+
     const messageElement = document.getElementById("messages");
-    const html_to_insert = `<p>${name}: ${message}</p>`;
+    const html_to_insert = `<p>${name}: ${escapedMessage}</p>`;
     messageElement.insertAdjacentHTML("afterbegin", html_to_insert);
 }
 

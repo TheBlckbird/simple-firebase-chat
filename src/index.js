@@ -1,2 +1,1 @@
 import "./chat";
-import "./messaging";
