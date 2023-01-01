@@ -18,7 +18,7 @@ const logoutButton = document.getElementById("logout-button");
 const chatForm = document.getElementById("chat-form");
 
 loginButton.style.display = "block";
-// chatForm.style.display = "none";
+chatForm.style.display = "none";
 logoutButton.style.display = "none";
 
 onAuthStateChanged(auth, (user) => {
@@ -26,13 +26,13 @@ onAuthStateChanged(auth, (user) => {
         userId = user.uid;
         userName = user.displayName;
         loginButton.style.display = "none";
-        // chatForm.style.display = "block";
+        chatForm.style.display = "block";
         logoutButton.style.display = "block";
     } else {
         userId = null;
         userName = null;
         loginButton.style.display = "block";
-        // chatForm.style.display = "none";
+        chatForm.style.display = "none";
         logoutButton.style.display = "none";
     }
 });
